@@ -1,0 +1,43 @@
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+    <style>
+    .sf-toolbar-live-reload.default-status::before {
+        /* background-color: #4f805d; */
+        background-color: #b0413e;
+    }
+    .sf-toolbar-live-reload::before {
+        display: inline-block;
+        content: '';
+        height: 15px;
+        width: 15px;
+        border-radius: 100%;
+        vertical-align: middle;
+    }
+</style>
+        {# this is the content displayed as a panel in the toolbar #}
+        <span class="sf-toolbar-value sf-toolbar-live-reload default-status">
+        live reload
+        </span>
+    {% endset %}
+
+    {% set text %}
+        {# this is the content displayed when hovering the mouse over
+           the toolbar panel #}
+        <div class="sf-toolbar-info-piece">
+            <b>last reload</b>
+            {# <time>{{ collector.lastReload }}</time> #}
+            <time datetime="{{ collector.lastReload|date('c') }}">{{ collector.lastReload|date('r') }}</time>
+        </div>
+
+        <div class="sf-toolbar-info-piece">
+            <b>Accepted content type</b>
+            <span>{{ collector.acceptableContentTypes|join(', ') }}</span>
+        </div>
+    {% endset %}
+
+    {# the 'link' value set to 'false' means that this panel doesn't
+       show a section in the web profiler #}
+    {{ include('@WebProfiler/Profiler/toolbar_item.html.twig', { link: false }) }}
+{% endblock %}
