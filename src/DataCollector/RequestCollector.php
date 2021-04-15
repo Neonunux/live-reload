@@ -1,5 +1,5 @@
 <?php
-namespace App\DataCollector;
+namespace Neonunux\DataCollector;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
